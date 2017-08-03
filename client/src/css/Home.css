@@ -1,0 +1,44 @@
+.index {
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	background: url('../images/lunch.jpg');
+	background-size: cover;
+	height: 800px;
+}
+
+.layer {
+	background-color:  rgba(128, 222, 234, 0.5);
+	width: 100%;
+	height: 100%;
+}
+
+.about-button {
+	vertical-align: top;
+	float: left;
+}
+
+.button {
+	margin-left: 1%;
+}
+
+.home-body {
+	/*border: 1px red solid;*/
+	margin-top: 15%;
+}
+
+h1 {
+	font-family: 'Roboto', sans-serif;
+	font-size: 5em;
+	font-weight: 400;
+	color: #FFFFFF;
+	text-shadow: 2px 2px #616A6B;
+}
+
+.subtitle {
+	font-size: 2em;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+	color: #FFFFFF;	
+	text-shadow: 1px 1px #616A6B;
+}
