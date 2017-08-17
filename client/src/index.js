@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route } from 'react-router-dom'; 
 import { Provider } from 'react-redux';
+import injectTapEventPlugin from 'react-tap-event-plugin';
 
 import './index.css';
 
@@ -27,6 +28,7 @@ const Router = (
 	</Provider>
 )
 
+injectTapEventPlugin();
 
 ReactDOM.render(Router, document.getElementById('root'));
 registerServiceWorker();
