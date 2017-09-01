@@ -1,10 +1,12 @@
 import React from 'react';
 import { Field, reduxForm, SubmissionError } from 'redux-form';
+import { connect } from 'react-redux';
 import { Redirect } from 'react-router';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton';
 
+import { submitLogin } from '../actions/index'
 import '../css/Login.css';
 
 const style = {
@@ -33,7 +35,7 @@ class LoginForm extends React.Component {
       redirect: false
     }
 
-    this.submitLogin = this.submitLogin.bind(this);
+    // this.submitLogin = this.submitLogin.bind(this);
     this.submit = this.submit.bind(this);
   }
 
@@ -56,7 +58,32 @@ class LoginForm extends React.Component {
   //   });  
   // }
 
-  submit(values) {
+  // submit(values) {
+
+  //   let error = {};
+  //   let isError = false;
+
+  //   if (!values.email) {
+  //     error.email = 'Required';
+  //     isError = true;
+  //   }
+
+  //   if (!values.password) {
+  //     error.password = 'Required';
+  //     isError = true;
+  //   }
+
+  //   if (isError) {
+  //     throw new SubmissionError(error);
+  //   } else {
+  //     this.submitLogin(values.email, values.password)
+  //       .then(data => console.log(data))
+  //       .then(() => this.setState({ redirect: true}));
+  //   }
+    
+  // }
+
+    submit(values) {
 
     let error = {};
     let isError = false;
@@ -74,9 +101,9 @@ class LoginForm extends React.Component {
     if (isError) {
       throw new SubmissionError(error);
     } else {
-      this.submitLogin(values.email, values.password)
+      this.props.dispatch(submitLogin())
         .then(data => console.log(data))
-        .then(() => this.setState({ redirect: true}));
+        // .then(() => this.setState({ redirect: true}));
     }
     
   }

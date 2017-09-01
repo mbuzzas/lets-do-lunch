@@ -8,6 +8,7 @@ const Login = (state = initialState, action) => {
 			return {
 				...state,
 				loggedIn: true
+				user: action.user
 			}
 
 		default:

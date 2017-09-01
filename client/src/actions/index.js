@@ -1,25 +1,23 @@
-export const isLoggedIn = () => {
-	type: 'LOGGED_IN',
-	loggedIn
+export const isLoggedIn = (user) => {
+	return {
+		type: 'LOGGED_IN',
+		user
+	}
 }
 
- export const submitLogin = (email, password) => {
+export const submitLogin = (email, password) => {
 	return (dispatch) => {
 		fetch('/login', {
 			method: 'POST',
 			headers: {
-			'Content-type': 'application/json',
+				'Content-type': 'application/json'
 			},
-			body: JSON.stringify({email:email, password:password}),
-			})
-		}
-		.then((response) => response.json())
-		.then((responseJson) => {
-		  // return responseJson;
-		  //dispatch action type property
-		  console.log(responseJson);
+			body: JSON.stringify({email: email, password: password}),
 		})
+		.then((response) => response.json())
+		.then(json => dispatch(isLoggedIn()))
 		.catch((error) => {
-		  console.error(error);
-		});  
+			console.error(error);
+		});
+	}
 }
