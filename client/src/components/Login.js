@@ -37,23 +37,24 @@ class LoginForm extends React.Component {
     this.submit = this.submit.bind(this);
   }
 
-  submitLogin(email, password) {
-    return fetch('/login', {
-      method: 'POST',
-      headers: {
-        'Content-type': 'application/json',
-      },
-      body: JSON.stringify({email:email, password:password}),
-    })
-    .then((response) => response.json())
-    .then((responseJson) => {
-      // return responseJson;
-      console.log(responseJson);
-    })
-    .catch((error) => {
-      console.error(error);
-    });  
-  }
+  // submitLogin(email, password) {
+  //   return fetch('/login', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-type': 'application/json',
+  //     },
+  //     body: JSON.stringify({email:email, password:password}),
+  //   })
+  //   .then((response) => response.json())
+  //   .then((responseJson) => {
+  //     // return responseJson;
+  //     //dispatch action type property
+  //     console.log(responseJson);
+  //   })
+  //   .catch((error) => {
+  //     console.error(error);
+  //   });  
+  // }
 
   submit(values) {
 
