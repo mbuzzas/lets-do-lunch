@@ -102,7 +102,7 @@ class LoginForm extends React.Component {
       throw new SubmissionError(error);
     } else {
       this.props.dispatch(submitLogin())
-        .then(data => console.log(data))
+        // .then(data => console.log(data))
         // .then(() => this.setState({ redirect: true}));
     }
     

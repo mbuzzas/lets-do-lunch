@@ -1,5 +1,6 @@
 const initialState = {
-	loggedIn: false
+	loggedIn: false,
+	user: {}
 }
 
 const Login = (state = initialState, action) => {
@@ -7,12 +8,24 @@ const Login = (state = initialState, action) => {
 		case 'LOGGED_IN':
 			return {
 				...state,
-				loggedIn: true
+				loggedIn: true,
 				user: action.user
 			}
 
 		default:
 			return state
+	}
+}
+
+const Signup = (state = initialState, action) => {
+	switch(action.type) {
+		case 'ADD_USER':
+			console.log("adding new user");
+			return {
+				...state,
+				loggedIn: true,
+				user: action.user
+			}
 	}
 }
 

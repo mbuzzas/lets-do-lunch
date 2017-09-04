@@ -5,6 +5,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton';
 
+import { submitSignup } from '../actions/index'
 import '../css/Signup.css';
 
 
@@ -44,31 +45,30 @@ class SignupForm extends React.Component {
       redirect: false
     }
 
-    this.submitSignup = this.submitSignup.bind(this);
     this.submit = this.submit.bind(this);
   }
 
 
-  submitSignup(firstname, lastname, email, password) {
-    return fetch('/signup', {
-      method: 'POST',
-      headers: {
-        'Content-type': 'application/json',
-      },
-      body: JSON.stringify({
-        firstname:firstname,
-        lastname: lastname,
-        email:email,
-        password:password}),
-    })
-    .then((response) => response.json())
-    .then((responseJson) => {
-      return responseJson;
-    })
-    .catch((error) => {
-      console.error(error);
-    });
-  }
+  // submitSignup(firstname, lastname, email, password) {
+  //   return fetch('/signup', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-type': 'application/json',
+  //     },
+  //     body: JSON.stringify({
+  //       firstname:firstname,
+  //       lastname: lastname,
+  //       email:email,
+  //       password:password}),
+  //   })
+  //   .then((response) => response.json())
+  //   .then((responseJson) => {
+  //     return responseJson;
+  //   })
+  //   .catch((error) => {
+  //     console.error(error);
+  //   });
+  // }
 
   submit(values) {
 
@@ -91,9 +91,9 @@ class SignupForm extends React.Component {
       throw new SubmissionError(error);
     } else {
       //submit form to server
-      this.submitSignup(values.firstname, values.lastname, values.email, values.password)
-        .then(data => console.log(data))
-        .then(() => this.setState({ redirect: true }));
+      this.props.dispatch(submitSignup())
+        // .then(data => console.log(data))
+        // .then(() => this.setState({ redirect: true }));
       // console.log(values);
     }
 
