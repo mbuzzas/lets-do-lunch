@@ -6,6 +6,7 @@ const initialState = {
 const Login = (state = initialState, action) => {
 	switch(action.type) {
 		case 'LOGGED_IN':
+			console.log("logged in");
 			return {
 				...state,
 				loggedIn: true,
@@ -26,7 +27,9 @@ const Signup = (state = initialState, action) => {
 				loggedIn: true,
 				user: action.user
 			}
+			default:
+			return state
 	}
 }
 
-export default Login
+export default Signup

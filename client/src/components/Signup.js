@@ -1,5 +1,6 @@
 import React from 'react';
 import { Field, reduxForm, SubmissionError } from 'redux-form';
+import { connect } from 'react-redux';
 import { Redirect } from 'react-router';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import TextField from 'material-ui/TextField'
@@ -7,15 +8,6 @@ import RaisedButton from 'material-ui/RaisedButton';
 
 import { submitSignup } from '../actions/index'
 import '../css/Signup.css';
-
-
-// const renderField = ({type, label, input, meta: {touched, error} }) => (
-//   <div className="input-row">
-//     <label>{label}</label>
-//     <input {...input} type={type}/>
-//     {touched && error && <span className="error">{error}</span>}
-//   </div>
-// )
 
 const style = {
   margin: 12,
@@ -48,29 +40,9 @@ class SignupForm extends React.Component {
     this.submit = this.submit.bind(this);
   }
 
-
-  // submitSignup(firstname, lastname, email, password) {
-  //   return fetch('/signup', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-type': 'application/json',
-  //     },
-  //     body: JSON.stringify({
-  //       firstname:firstname,
-  //       lastname: lastname,
-  //       email:email,
-  //       password:password}),
-  //   })
-  //   .then((response) => response.json())
-  //   .then((responseJson) => {
-  //     return responseJson;
-  //   })
-  //   .catch((error) => {
-  //     console.error(error);
-  //   });
-  // }
-
   submit(values) {
+
+    console.log(values)
 
     let error = {};
     let isError = false;
@@ -91,7 +63,7 @@ class SignupForm extends React.Component {
       throw new SubmissionError(error);
     } else {
       //submit form to server
-      this.props.dispatch(submitSignup())
+      this.props.dispatch(submitSignup(values.firstname, values.lastname, values.email, values.password))
         // .then(data => console.log(data))
         // .then(() => this.setState({ redirect: true }));
       // console.log(values);
@@ -120,11 +92,14 @@ class SignupForm extends React.Component {
   }
 }
 
+const mapStateToProps = (state) => ({
+  user: state.user
+})
 
 SignupForm = reduxForm({
   form: 'signupForm'
 })(SignupForm)
 
-export default SignupForm;
+export default connect(mapStateToProps)(SignupForm);
 
 

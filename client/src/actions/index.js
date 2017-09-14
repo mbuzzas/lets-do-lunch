@@ -1,3 +1,5 @@
+
+
 export const isLoggedIn = (user) => {
 	return {
 		type: 'LOGGED_IN',
@@ -45,31 +47,13 @@ export const submitSignup = (firstname, lastname, email, password) => {
 		    password:password}),
 		})
 		.then((response) => response.json())
-		.then(json => console.log(json))
+		.then(json => dispatch(isLoggedIn(json.user)))
 		.catch((error) => {
 		  console.error(error);
 		});
 	}
 }
 
-// export const submitSignup = (firstname, lastname, email, password) => {
-// 	return (dispatch) => {
-// 		fetch('/signup', {
-// 			method: 'POST',
-// 			headers: {
-// 				'Content-type': 'application/json'
-// 			},
-// 			body: JSON.stringify({
-// 				firstname:firstname,
-// 				lastname:lastname,
-// 				email:email,
-// 				password:password
-// 			})
-// 		})
-// 		.then((response) => response.json())
-// 		.then(json => console.log(json))
-// 	}
-// }
 
 
 
